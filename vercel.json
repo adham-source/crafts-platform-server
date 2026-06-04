@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd server && npm run build",
+  "startCommand": "cd server && npm start",
+  "outputDirectory": "server/dist"
+}
