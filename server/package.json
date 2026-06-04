@@ -51,8 +51,5 @@
     "prettier": "3.8.3",
     "ts-node": "10.9.2",
     "typescript": "6.0.3"
-  },
-  "engines": {
-    "node": ">=20"
   }
 }
