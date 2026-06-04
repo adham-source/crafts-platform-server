@@ -17,7 +17,10 @@ async function start() {
   });
 }
 
-start().catch((err) => {
-  logger.error('Failed to start server:', err);
+// use try and catch to log any startup errors
+try {
+  start();
+} catch (error) {
+  logger.error('Failed to start server:', error);
   process.exit(1);
-});
+}
