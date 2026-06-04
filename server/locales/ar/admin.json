@@ -1,0 +1,8 @@
+{
+  "role_updated": "تم تحديث الدور بنجاح",
+  "cannot_modify_admin_role": "لا يمكن تعديل دور الأدمن",
+  "missing_user_id": "معرّف المستخدم مفقود",
+  "all_refresh_tokens_revoked": "تم إلغاء جميع رموز التحديث",
+  "refresh_token_revoked": "تم إلغاء رمز التحديث",
+  "newsletter_sent": "تم إرسال النشرة الإخبارية بنجاح"
+}

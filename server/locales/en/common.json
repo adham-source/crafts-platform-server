@@ -1,0 +1,13 @@
+{
+  "welcome": "Welcome to Crafts Platform",
+  "health_check": "Service is healthy",
+  "name": "Name",
+  "email": "Email",
+  "password": "Password",
+  "role": "Role",
+  "craft_specialty": "Craft specialty",
+  "bio": "Bio",
+  "artisan": "Artisan",
+  "buyer": "Buyer",
+  "admin": "Admin"
+}

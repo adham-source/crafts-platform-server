@@ -1,0 +1,21 @@
+{
+  "internal_error": "Internal server error",
+  "invalid_role": "Invalid role",
+  "user_not_found": "User not found",
+  "unauthorized": "Unauthorized",
+  "forbidden": "Forbidden",
+  "cannot_assign_admin_role": "Cannot assign admin role",
+  "too_many_requests": "Too many requests, please try again later.",
+  "too_many_auth_attempts": "Too many authentication attempts. Please try again in an hour.",
+  "too_many_actions": "Too many actions performed. Please slow down.",
+  "password_too_short": "Password must be at least 8 characters long.",
+  "password_uppercase": "Password must contain at least one uppercase letter.",
+  "password_lowercase": "Password must contain at least one lowercase letter.",
+  "password_number": "Password must contain at least one number.",
+  "password_special": "Password must contain at least one special character.",
+  "invalid_email": "Please provide a valid email address.",
+  "password_required": "Password is required.",
+  "token_required": "Token is required.",
+  "refresh_token_required": "Refresh token is required for logout.",
+  "account_blocked": "This account has been blocked. Please contact support."
+}
