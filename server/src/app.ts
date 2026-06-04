@@ -44,7 +44,7 @@ export function createServer(): Express {
    *             schema:
    *               $ref: '#/components/schemas/SuccessResponse'
    */
-  app.get('/health', (req, res) =>
+  app.get('/', (req, res) =>
     res.json({ success: true, message: req.t('common:health_check') })
   );
 
