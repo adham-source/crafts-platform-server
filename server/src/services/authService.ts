@@ -1,4 +1,3 @@
-import { config } from '../config';
 import { HttpError } from '../utils/httpError';
 import { userService } from './userService';
 import { hashPassword, verifyPassword } from '../utils/hash';
