@@ -1,11 +1,10 @@
 import { Express } from 'express';
 import path from 'path';
 import { config } from './config';
-// Use require to preserve runtime compatibility for swagger-jsdoc and swagger-ui-express
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const swaggerJSDoc: any = require('swagger-jsdoc');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const swaggerUi: any = require('swagger-ui-express');
+
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
+
 
 const swaggerSpecification = {
   openapi: '3.0.0',
@@ -245,20 +244,6 @@ const swaggerSpecification = {
   }
 };
 
-const swaggerUiOptions = {
-  explorer: true,
-  swaggerOptions: {
-    docExpansion: 'list',
-    defaultModelsExpandDepth: 1,
-    defaultModelRendering: 'example',
-    displayRequestDuration: true,
-    persistAuthorization: true,
-    tryItOutEnabled: true,
-    operationsSorter: 'alpha',
-    supportedSubmitMethods: ['get', 'post', 'patch']
-  }
-};
-
 const swaggerCustomCss = `
 .swagger-ui .topbar { 
     background-color: #1a202c; 
@@ -291,8 +276,23 @@ const swaggerCustomCss = `
 }
 `;
 
+const swaggerUiOptions = {
+  explorer: true,
+  customCss: swaggerCustomCss,
+  swaggerOptions: {
+    docExpansion: 'list',
+    defaultModelsExpandDepth: 1,
+    defaultModelRendering: 'example',
+    displayRequestDuration: true,
+    persistAuthorization: true,
+    tryItOutEnabled: true,
+    operationsSorter: 'alpha',
+    supportedSubmitMethods: ['get', 'post', 'patch']
+  }
+};
+
 export function setupSwagger(app: Express) {
   const controllersGlob = path.join(__dirname, 'controllers', '*.ts');
   const spec = swaggerJSDoc({ definition: swaggerSpecification, apis: [controllersGlob] });
-  app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(spec, swaggerUiOptions, swaggerCustomCss));
+  app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(spec, swaggerUiOptions));
 }
