@@ -6,8 +6,6 @@ export const requireAuth = passport.authenticate('jwt', { session: false });
 
 export function requireRole(...roles: RoleValue[]) {
   return (req: Request, res: Response, next: NextFunction) => {
-    // passport attaches user to req.user
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const user = (req as any).user;
     if (!user) {
       return res.status(401).json(({ message:req.t('errors:unauthorized') }));

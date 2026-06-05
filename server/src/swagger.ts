@@ -244,41 +244,8 @@ const swaggerSpecification = {
   }
 };
 
-const swaggerCustomCss = `
-.swagger-ui .topbar { 
-    background-color: #1a202c; 
-    border-bottom: 2px solid #ed8936;
-}
-.swagger-ui .topbar a span { color: #ffffff; font-weight: bold; }
-.swagger-ui .info .title { color: #2d3748; font-size: 2.5em; }
-.swagger-ui .info .description { 
-    background: #f7fafc; 
-    padding: 20px; 
-    border-radius: 8px; 
-    border-left: 5px solid #ed8936;
-    color: #4a5568;
-}
-.swagger-ui .opblock-tag {
-    font-family: sans-serif;
-    color: #2d3748;
-    border-bottom: 1px solid #e2e8f0;
-}
-.swagger-ui .btn.authorize { 
-    background-color: #ed8936; 
-    color: white; 
-    border-color: #ed8936;
-}
-.swagger-ui .btn.authorize svg { fill: white; }
-.swagger-ui .btn.try-out__btn { 
-    background-color: #48bb78; 
-    color: white; 
-    border: none;
-}
-`;
-
 const swaggerUiOptions = {
   explorer: true,
-  customCss: swaggerCustomCss,
   swaggerOptions: {
     docExpansion: 'list',
     defaultModelsExpandDepth: 1,

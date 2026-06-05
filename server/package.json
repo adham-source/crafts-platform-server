@@ -42,8 +42,12 @@
     "@types/passport-jwt": "4.0.1",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.8",
+    "glob": "^13.0.6",
     "nodemon": "3.1.14",
     "ts-node": "10.9.2",
     "typescript": "6.0.3"
+  },
+  "overrides": {
+    "glob": "$glob"
   }
 }
