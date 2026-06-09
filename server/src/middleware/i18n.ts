@@ -1,7 +1,7 @@
 import { Express, Request, Response, NextFunction } from 'express';
 import i18next from 'i18next';
 import Backend from 'i18next-fs-backend';
-import middleware from 'i18next-http-middleware';
+import { LanguageDetector, handle } from 'i18next-http-middleware';
 import path from 'path';
 import logger from '../utils/logger';
 import { config } from '../config';
@@ -9,7 +9,7 @@ import { config } from '../config';
 export function setupI18n(app: Express) {
   i18next
     .use(Backend)
-    .use(middleware.LanguageDetector)
+    .use(LanguageDetector)
     .init({
       fallbackLng: 'ar',
       supportedLngs: ['ar', 'en'],
@@ -28,7 +28,7 @@ export function setupI18n(app: Express) {
       }
     });
 
-  app.use(middleware.handle(i18next));
+  app.use(handle(i18next));
 
   app.use((req: Request, _res: Response, next: NextFunction) => {
     if (config.env !== 'production') {
