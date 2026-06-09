@@ -3,17 +3,6 @@
   "env": {
     "NODE_ENV": "production"
   },
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/node@3.x",
-      "config": {
-        "nodeVersion": "24.x",
-        "sourceMaps": true,
-        "maxDuration": 30
-      }
-    }
-  ],
   "routes": [
     {
       "src": "/api/(.*)",
@@ -23,5 +12,10 @@
       "src": "/(.*)",
       "dest": "dist/index.js"
     }
-  ]
+  ],
+  "functions": {
+    "dist/index.js": {
+      "maxDuration": 30
+    }
+  }
 }
