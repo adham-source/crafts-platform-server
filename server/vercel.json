@@ -9,7 +9,8 @@
       "use": "@vercel/node@3.x",
       "config": {
         "nodeVersion": "24.x",
-        "sourceMaps": true
+        "sourceMaps": true,
+        "maxDuration": 30
       }
     }
   ],
@@ -22,10 +23,5 @@
       "src": "/(.*)",
       "dest": "dist/index.js"
     }
-  ],
-  "functions": {
-    "dist/index.js": {
-      "maxDuration": 30
-    }
-  }
+  ]
 }
