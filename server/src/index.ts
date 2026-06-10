@@ -20,7 +20,7 @@ async function start() {
 
   const server = app.listen(port, () => {
     logger.info(`🚀 Server running on http://localhost:${port}`);
-    logger.info(`📚 Swagger: http://localhost:${port}/api/docs`);
+    logger.info(`📚 Swagger: ${config.urls.swagger}/api/docs`);
     logger.info(`🌍 Environment: ${config.env}`);
   });
 

@@ -7,10 +7,10 @@ dotenv.config();
  */
 
 export const config = {
-  env: process.env.NODE_ENV || 'development',
-  port: Number(process.env.PORT) || 3000,
+  env: process.env.NODE_ENV,
+  port: Number(process.env.PORT),
   jwtSecret: process.env.JWT_SECRET as string,
-  saltRounds: Number(process.env.SALT_ROUNDS) || 10,
+  saltRounds: Number(process.env.SALT_ROUNDS),
   secretKey: process.env.SECRET_KEY as string,
   
   // إعدادات قاعدة البيانات
