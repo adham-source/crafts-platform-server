@@ -1,53 +1,25 @@
-import { createServer } from './app';
-import { connectDB } from './db';
-import logger, { setupProductionSecurity } from './utils/logger';
-import { config } from './config';
+import { createServer } from './app.js';
+import { connectDB } from './db.js';
+import logger, { setupProductionSecurity } from './utils/logger.js';
+import { config } from './config.js';
 
-async function start() {
-  // تفعيل نظام الأمان للسجلات في بيئة الإنتاج
-  setupProductionSecurity();
+// تفعيل نظام الأمان للسجلات في بيئة الإنتاج
+setupProductionSecurity();
 
-  try {
-    await connectDB();
-    logger.info('✅ Database connected successfully');
-  } catch (error) {
-    logger.error('❌ Failed to connect to database:', error);
-    process.exit(1);
-  }
+// تصدير الـ app ليعمل كـ Serverless Function على Vercel
+const app = createServer();
 
-  const app = createServer();
-  const port = config.port;
+// محاولة الاتصال بقاعدة البيانات بشكل كلي (Global) لضمان إعادة استخدام الاتصال
+connectDB()
+  .then(() => logger.info('✅ Database connected successfully'))
+  .catch((error) => logger.error('❌ Database connection error:', error));
 
-  const server = app.listen(port, () => {
+// التشغيل التقليدي للسيرفر (فقط إذا لم يكن يعمل كـ Serverless Function)
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  const port = config.port || 4000;
+  app.listen(port, () => {
     logger.info(`🚀 Server running on http://localhost:${port}`);
-    logger.info(`📚 Swagger: ${config.urls.swagger}/api/docs`);
-    logger.info(`🌍 Environment: ${config.env}`);
-  });
-
-  // معالجة الأخطاء غير المتوقعة
-  server.on('error', (error: any) => {
-    if (error.code === 'EADDRINUSE') {
-      logger.error(`❌ Port ${port} is already in use`);
-    } else {
-      logger.error('❌ Server error:', error);
-    }
-    process.exit(1);
-  });
-
-  // معالجة عمليات الإيقاف
-  process.on('SIGTERM', () => {
-    logger.info('⚠️ SIGTERM signal received: closing HTTP server');
-    server.close(() => {
-      logger.info('✅ HTTP server closed');
-      process.exit(0);
-    });
   });
 }
 
-// استخدام try و catch لتسجيل أي أخطاء بدء التشغيل
-try {
-  start();
-} catch (error) {
-  logger.error('❌ Fatal error during startup:', error);
-  process.exit(1);
-}
+export default app;
