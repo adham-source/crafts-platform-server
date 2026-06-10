@@ -15,8 +15,7 @@
   ],
   "functions": {
     "dist/index.js": {
-      "maxDuration": 30,
-      "runtime": "nodejs22.x"
+      "maxDuration": 30
     }
   }
 }
