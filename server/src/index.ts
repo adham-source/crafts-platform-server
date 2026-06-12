@@ -1,7 +1,7 @@
-import { createServer } from './app.js';
-import { connectDB } from './db.js';
-import logger, { setupProductionSecurity } from './utils/logger.js';
-import { config } from './config.js';
+import { createServer } from './app';
+import { connectDB } from './db';
+import logger, { setupProductionSecurity } from './utils/logger';
+import { config } from './config';
 
 // تفعيل نظام الأمان للسجلات في بيئة الإنتاج
 setupProductionSecurity();
