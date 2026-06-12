@@ -1,4 +1,4 @@
-import express, { Express } from 'express';
+import express, { Application } from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import passport from 'passport';
@@ -10,7 +10,7 @@ import { setupI18n } from './middleware/i18n';
 import { errorHandler } from './middleware/errorHandler';
 import { generalLimiter } from './middleware/rateLimiter';
 
-export function createServer(): Express {
+export function createServer(): Application {
   const app = express();
   app.use(helmet());
   app.use(cors());
