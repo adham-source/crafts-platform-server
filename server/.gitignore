@@ -145,3 +145,7 @@ Thumbs.db
 # .md files are documentation, not code, so we ignore them exclude Readme.md which is important for the project
 *.md
 !README.md
+
+# Ignore vercel deployment files
+.vercel/   
+vercel.json
