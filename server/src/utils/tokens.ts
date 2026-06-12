@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { config } from '../config';
 import { randomBytes } from 'crypto';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 
 export function generateAccessToken(userId: string, email: string) {
   return jwt.sign({ sub: userId, email }, config.jwtSecret as string, { expiresIn: '15m' });
