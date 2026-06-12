@@ -45,7 +45,7 @@ export function createServer(): Application {
    *             schema:
    *               $ref: '#/components/schemas/SuccessResponse'
    */
-  app.get('/', (req, res) =>{
+  app.get('/health', (req, res) =>{
      // favicon.ico
     if (req.path === '/favicon.ico') {
       return res.status(204).end();

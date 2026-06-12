@@ -4,14 +4,15 @@ import logger, { setupProductionSecurity } from './utils/logger';
 import { config } from './config';
 
 setupProductionSecurity();
-
 const app = createServer();
 
 // الاتصال بقاعدة البيانات ثم بدء الخادم
 connectDB()
   .then(() => {
     app.listen(config.port, () => {
-      logger.info(`Server is running on port ${config.port}`);
+      logger.info(`Server is running on ${config.urls.server}`);
+      logger.info(`Swagger docs available at ${config.urls.server}/api/docs`);
+      logger.info(`Environment: ${config.env}`);
     });
   })
   .catch((err) => {

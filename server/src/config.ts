@@ -1,6 +1,12 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
+if(process.env.NODE_ENV === 'production') {
+  console.warn('Running in production mode. Ensure all environment variables are set correctly.');
+} else {
+  console.info('Running in development mode. Loaded environment variables from .env file.');
+}
+
 /**
  * ملف الإعدادات المركزي (Centralized Config)
  * الهدف: تجميع كافة متغيرات البيئة في مكان واحد لتسهيل الصيانة وتجنب تكرار process.env
@@ -39,6 +45,6 @@ export const config = {
   // روابط الواجهة الأمامية والتوثيق
   urls: {
     frontend: process.env.FRONTEND_URL as string,
-    swagger: process.env.SWAGGER_SERVER_URL as string,
+    server: process.env.SERVER_URL as string,
   }
 };

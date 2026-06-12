@@ -31,7 +31,7 @@ const swaggerSpecification = {
   },
   servers: [
     {
-      url: config.urls.swagger,
+      url: config.urls.server,
       description: 'Dynamic Server (Production or Local)'
     }
   ],
