@@ -15,6 +15,7 @@ export function createServer(): Application {
   app.use(helmet());
   app.use(cors());
   app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
   app.use(morgan('dev'));
 
   setupI18n(app);
@@ -44,10 +45,14 @@ export function createServer(): Application {
    *             schema:
    *               $ref: '#/components/schemas/SuccessResponse'
    */
-  app.get('/', (req, res) =>
+  app.get('/', (req, res) =>{
+     // favicon.ico
+    if (req.path === '/favicon.ico') {
+      return res.status(204).end();
+    }
     res.json({ success: true, message: req.t('common:health_check') })
-  );
-
+  });
+   
   app.use(errorHandler);
 
   return app;
