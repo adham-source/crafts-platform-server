@@ -5,7 +5,7 @@ This folder contains the backend API. Frontend assets will live in sibling `/fro
 Quick start:
 
 ```bash
-cd backend
+cd server
 npm install
 npm run dev
 ```
